@@ -17,14 +17,15 @@ namespace ConsoleAppBeboer
     {
         static void Main(string[] args)
         {
-            if (!File.Exists("WorkersDatabase.sqlite"))
+            if (File.Exists("WorkersDatabase.sqlite"))
             {
-                SQLiteConnection.CreateFile("WorkersDatabase.sqlite");
-                Console.WriteLine("The file is now createt.");
+                //SQLiteConnection.CreateFile("WorkersDatabase.sqlite");
+                File.Delete("WorkersDatabase.sqlite");
+                Console.WriteLine("Deleting the file.");
 
             }
 
-            SQLiteConnection Workers_dbConnection = new SQLiteConnection("Data Source=WorkersDatabase.sqlite3;Version=3;");
+            SQLiteConnection Workers_dbConnection = new SQLiteConnection("Data Source=WorkersDatabase.sqlite;Version=3;");//den her laver også en database file hvis den ikke er der
 
             Workers_dbConnection.Open();//open the data steam / database
 
@@ -33,6 +34,25 @@ namespace ConsoleAppBeboer
             SQLiteCommand command = new SQLiteCommand(sql, Workers_dbConnection);//make's the command
 
             command.ExecuteNonQuery();//Execute the query
+
+            sql = "insert into workers (name, is_banned) values ('ImNumber1', 0)";//insert data into database
+            command = new SQLiteCommand(sql, Workers_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into workers (name, is_banned) values ('ImNumber2', 1)";
+            command = new SQLiteCommand(sql, Workers_dbConnection);
+            command.ExecuteNonQuery();
+            sql = "insert into workers (name, is_banned) values ('ImNumber3', 0)";
+            command = new SQLiteCommand(sql, Workers_dbConnection);
+            command.ExecuteNonQuery();
+
+            sql = "select * from workers";
+            command = new SQLiteCommand(sql, Workers_dbConnection);
+
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine("Name: " + reader["name"] + "\tis_banned?: " + reader["is_banned"]);
+            }
 
 
             /*
