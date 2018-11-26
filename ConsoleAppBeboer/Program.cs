@@ -21,11 +21,20 @@ namespace ConsoleAppBeboer
             {
                 SQLiteConnection.CreateFile("WorkersDatabase.sqlite");
                 Console.WriteLine("The file is now createt.");
+
             }
 
             SQLiteConnection Workers_dbConnection = new SQLiteConnection("Data Source=WorkersDatabase.sqlite3;Version=3;");
 
-            Workers_dbConnection.Open();
+            Workers_dbConnection.Open();//open the data steam / database
+
+            string sql = "CREATE TABLE workers (name VARCHAR(20), is_banned BOOLEAN)";//making the sql query
+
+            SQLiteCommand command = new SQLiteCommand(sql, Workers_dbConnection);//make's the command
+
+            command.ExecuteNonQuery();//Execute the query
+
+
             /*
             // Se mere om connectionsstrings på https://www.connectionstrings.com/sqlite/
             SQLiteConnection beboer_dbConnection = new SQLiteConnection("Data Source=beboerliste.sqlite3;Version=3;");
