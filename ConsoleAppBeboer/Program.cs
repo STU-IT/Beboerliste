@@ -16,6 +16,10 @@ namespace ConsoleAppBeboer
     {
         static void Main(string[] args)
         {
+
+
+            
+            /*
             // Se mere om connectionsstrings på https://www.connectionstrings.com/sqlite/
             SQLiteConnection beboer_dbConnection = new SQLiteConnection("Data Source=beboerliste.sqlite3;Version=3;");
             // ----------------------------------------------------------------------^ filnavn
@@ -31,6 +35,8 @@ namespace ConsoleAppBeboer
             }
 
             beboer_dbConnection.Close();
+
+            */
         }
     }
 }
