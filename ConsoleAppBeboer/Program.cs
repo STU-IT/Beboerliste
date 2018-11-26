@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 // for vi har let adgang til namespacet
 // kræver en reference til dll-filen, men det er klare af NuGet
@@ -16,9 +17,15 @@ namespace ConsoleAppBeboer
     {
         static void Main(string[] args)
         {
+            if (!File.Exists("WorkersDatabase.sqlite"))
+            {
+                SQLiteConnection.CreateFile("WorkersDatabase.sqlite");
+                Console.WriteLine("The file is now createt.");
+            }
 
+            SQLiteConnection Workers_dbConnection = new SQLiteConnection("Data Source=WorkersDatabase.sqlite3;Version=3;");
 
-            
+            Workers_dbConnection.Open();
             /*
             // Se mere om connectionsstrings på https://www.connectionstrings.com/sqlite/
             SQLiteConnection beboer_dbConnection = new SQLiteConnection("Data Source=beboerliste.sqlite3;Version=3;");
@@ -37,6 +44,7 @@ namespace ConsoleAppBeboer
             beboer_dbConnection.Close();
 
             */
+            Workers_dbConnection.Close();
         }
     }
 }
