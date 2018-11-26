@@ -8,3 +8,9 @@ Man kan bruge [SQlite browser](https://sqlitebrowser.org/) til at oprette, bygge
 
 I .net programmer bruger man oftest NuGet pakken: System.Data.SQLite. Den skulle have det hele...
 
+
+
+...
+
+Man kan altid se videoen <https://iamtimcorey.com/sqlite-in-csharp/>
+
