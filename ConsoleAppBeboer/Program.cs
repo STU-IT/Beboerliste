@@ -45,7 +45,7 @@ namespace ConsoleAppBeboer
             command = new SQLiteCommand(sql, Workers_dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "UPDATE workers SET name = 'Imnumber4' WHERE name = 'ImNumber1';";
+            sql = "UPDATE workers SET name = 'Imnumber4' WHERE name = 'ImNumber1';";//update a a name
             command = new SQLiteCommand(sql, Workers_dbConnection);
             command.ExecuteNonQuery();
 
